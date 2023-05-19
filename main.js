@@ -10,14 +10,26 @@ function convertLink() {
     input.value = "";
 }
 
-function convertName() {
+function convertNameCPP() {
     let input = document.getElementById("name");
     if(input.value == "")   return;
-    let inputName = String(input.value);
+    let inputName = String(input.value).replace(/[^a-zA-Z ]/g, "").substring(2);
     let trimmed = inputName.split(' ');
     let convertedName = trimmed.join("_");
-    document.getElementById('convertedName').innerHTML = convertedName;
-    navigator.clipboard.writeText(convertedName);
-    document.getElementById("copyBtn2").style.backgroundColor = 'green';
+    document.getElementById('convertedName').innerHTML = convertedName+".cpp";
+    navigator.clipboard.writeText(convertedName+".cpp");
+    document.getElementById("copyBtnCPP").style.backgroundColor = 'green';
+    input.value = "";
+}
+
+function convertNameJava() {
+    let input = document.getElementById("name");
+    if(input.value == "")   return;
+    let inputName = String(input.value).replace(/[^a-zA-Z ]/g, "").substring(2);
+    let trimmed = inputName.split(' ');
+    let convertedName = trimmed.join("_");
+    document.getElementById('convertedName').innerHTML = convertedName+".java";
+    navigator.clipboard.writeText(convertedName+".java");
+    document.getElementById("copyBtnJava").style.backgroundColor = 'green';
     input.value = "";
 }
